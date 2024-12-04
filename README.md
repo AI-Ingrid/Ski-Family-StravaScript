@@ -1,2 +1,2 @@
-# LazyRunners-StravaScript
-Automating the process of updating Strava activities with personalized titles and descriptions. By analyzing key metrics such as heart rate, speed, and distance, StravaScript generates engaging summaries for each workout, allowing athletes to effortlessly enhance their activity logs
+# SkiFamily-StravaScript
+A script to organize the true family winners of this year's skiing season
