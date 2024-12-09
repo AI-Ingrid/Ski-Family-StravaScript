@@ -62,7 +62,7 @@ def plot_activity_charts(activities, activity_type, medal_images):
 
     # -- Plot elevation --
     plt.figure(figsize=(12, 8))
-    bars = plt.bar(df_distance['Athlete'], df_distance['Elevation'], color=colors[:len(df_distance)])
+    bars = plt.bar(df_elevation['Athlete'], df_elevation['Elevation'], color=colors[:len(df_elevation)])
 
     # Add images above each bar according to rank
     for i, (bar, medal_image) in enumerate(zip(bars, medal_images)):
