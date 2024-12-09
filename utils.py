@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import numpy as np
 
-def plot_activity_distances(activities, activity_type, medal_images):
+def plot_activity_charts(activities, activity_type, medal_images):
     filtered_activities = [
         activity for activity in activities if activity['type'] == activity_type
     ]

@@ -1,6 +1,6 @@
 from datetime import datetime
 from strava_api_requests import StravaAPI
-from utils import plot_activity_distances, get_page_and_last_activity_number, get_all_stored_activities
+from utils import plot_activity_charts, get_page_and_last_activity_number, get_all_stored_activities
 from push_to_github import commit_and_push_changes
 
 def connect_to_strava_api():
@@ -28,7 +28,7 @@ def main():
                     'emojis/troll.png', 'emojis/troll.png', 'emojis/troll.png', 'emojis/troll.png']
 
     if activities:
-        plot_activity_distances(activities, 'NordicSki', emoji_images)
+        plot_activity_charts(activities, 'NordicSki', emoji_images)
         commit_and_push_changes()
 
 if __name__ == '__main__':
