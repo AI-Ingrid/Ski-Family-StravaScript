@@ -35,14 +35,12 @@ def plot_activity_charts(activities, activity_type, medal_images):
     df_distance = df_distance.sort_values(by='Distance', ascending=False).reset_index(drop=True)
     df_elevation = df_elevation.sort_values(by='Elevation', ascending=False).reset_index(drop=True)
 
-    # Define colors for top positions
-    top_colors = ['gold', 'silver', '#cd7f32']  # Gold, Silver, Bronze
-    other_colors = plt.cm.Blues(range(3, len(df_distance)))  # Use colormap for other bars
-    colors = top_colors + list(other_colors)
+    color_distance = '#4682B4'
+    color_elevation = '#5F9EA0'
 
     # -- Plot distance --
     plt.figure(figsize=(12, 8))
-    bars = plt.bar(df_distance['Athlete'], df_distance['Distance'], color=colors[:len(df_distance)])
+    bars = plt.bar(df_distance['Athlete'], df_distance['Distance'], color=color_distance)
 
     # Add images above each bar according to rank
     for i, (bar, medal_image) in enumerate(zip(bars, medal_images)):
@@ -62,7 +60,7 @@ def plot_activity_charts(activities, activity_type, medal_images):
 
     # -- Plot elevation --
     plt.figure(figsize=(12, 8))
-    bars = plt.bar(df_elevation['Athlete'], df_elevation['Elevation'], color=colors[:len(df_elevation)])
+    bars = plt.bar(df_elevation['Athlete'], df_elevation['Elevation'], color=color_elevation)
 
     # Add images above each bar according to rank
     for i, (bar, medal_image) in enumerate(zip(bars, medal_images)):
