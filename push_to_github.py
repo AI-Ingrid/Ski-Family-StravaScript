@@ -11,10 +11,11 @@ def commit_and_push_changes():
         os.chdir(abs_path_repo) 
 
         # Add changes to git
-        subprocess.run(["git", "add", "data/nordic_ski_bar_chart.png"], check=True)
+        subprocess.run(["git", "add", "data/nordic_ski_bar_chart_distance.png"], check=True)
+        subprocess.run(["git", "add", "data/nordic_ski_bar_chart_elevation.png"], check=True)
 
         # Commit changes
-        subprocess.run(["git", "commit", "-m", "Update bar chart"], check=True)
+        subprocess.run(["git", "commit", "-m", "Update bar charts"], check=True)
 
         # Push changes
         subprocess.run(["git", "push"], check=True)  # Adjust branch name if necessary

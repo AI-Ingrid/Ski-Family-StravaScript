@@ -1,4 +1,5 @@
 import csv
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
@@ -14,7 +15,7 @@ def plot_activity_charts(activities, activity_type, medal_images):
 
     # Prepare data for plotting
     distances = [float(activity['distance']) / 1000 for activity in filtered_activities]
-    elevations = [float(activity['elevation']) for activity in filtered_activities]
+    elevations = [float(activity['elevation_gain']) for activity in filtered_activities]
     athletes = [(activity['athlete_name'] + " " + activity['athlete_lastname']) for activity in filtered_activities]
 
     df_distance = pd.DataFrame({
@@ -37,7 +38,6 @@ def plot_activity_charts(activities, activity_type, medal_images):
     # Define colors for top positions
     top_colors = ['gold', 'silver', '#cd7f32']  # Gold, Silver, Bronze
     other_colors = plt.cm.Blues(range(3, len(df_distance)))  # Use colormap for other bars
-    #other_colors = plt.cm.Blues(range(256))
     colors = top_colors + list(other_colors)
 
     # -- Plot distance --
