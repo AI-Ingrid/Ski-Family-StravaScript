@@ -43,14 +43,13 @@ def plot_activity_distances(activities, activity_type, medal_images):
         ab = AnnotationBbox(imagebox, (bar.get_x() + bar.get_width() / 2, yval + 1.0), frameon=False)  # Adjusted y-position
         plt.gca().add_artist(ab)
 
-    plt.title(f'{activity_type} Distances by Athlete 🏆', fontsize=16)
-    plt.xlabel('Athletes', fontsize=12)
-    plt.ylabel('Distance in km', fontsize=12)
+    plt.title('km på langrenn siden 1.nov 2024 til dags dato', fontsize=16)
+    plt.xlabel('Familiemedlem', fontsize=12)
+    plt.ylabel('km', fontsize=12)
     plt.xticks(rotation=45, ha='right')
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
     plt.savefig('data/nordic_ski_bar_chart.png')
-    #plt.show()
 
 
 def store_activities_with_metadata(new_activities, page, last_activity_number, filename='data/activities.csv'):

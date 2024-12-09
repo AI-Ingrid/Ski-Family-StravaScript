@@ -24,8 +24,11 @@ def main():
     first_of_november = int(datetime(2024, 11, 1).timestamp())
     activities = fetch_activities_after_date(strava_api, first_of_november)
 
+    emoji_images = ['emojis/1st-place.png', 'emojis/2nd-place.png', 'emojis/3rd-place.png', 
+                    'emojis/troll.png', 'emojis/troll.png', 'emojis/troll.png', 'emojis/troll.png']
+
     if activities:
-        plot_activity_distances(activities, 'NordicSki', ['1st-place.png', '2nd-place.png', '3rd-place.png', 'troll.png'])
+        plot_activity_distances(activities, 'NordicSki', emoji_images)
         commit_and_push_changes()
 
 if __name__ == '__main__':
