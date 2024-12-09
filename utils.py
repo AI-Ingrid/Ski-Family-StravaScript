@@ -1,8 +1,10 @@
-import json
+import csv
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+import numpy as np
 
-def plot_activity_distances(activities, activity_type):
+def plot_activity_distances(activities, activity_type, medal_images):
     filtered_activities = [
         activity for activity in activities if activity['type'] == activity_type
     ]
@@ -11,8 +13,8 @@ def plot_activity_distances(activities, activity_type):
         return
 
     # Prepare data for plotting
-    distances = [activity['distance']/1000  for activity in filtered_activities]
-    athletes = [activity['athlete']['firstname'] for activity in filtered_activities]
+    distances = [float(activity['distance']) / 1000 for activity in filtered_activities]
+    athletes = [(activity['athlete_name'] + " " + activity['athlete_lastname']) for activity in filtered_activities]
 
     df = pd.DataFrame({
         'Athlete': athletes,
@@ -21,23 +23,114 @@ def plot_activity_distances(activities, activity_type):
 
     df = df.groupby('Athlete').sum().reset_index()
 
-    # Plot
-    plt.figure(figsize=(10, 6))
-    plt.bar(df['Athlete'], df['Distance'])
-    plt.title(f'{activity_type} Distances by Athlete')
-    plt.xlabel('Athletes 👑')
-    plt.ylabel('Distance in km')
-    plt.xticks(rotation=45)
+    # Sort the DataFrame by Distance in descending order
+    df = df.sort_values(by='Distance', ascending=False).reset_index(drop=True)
+
+    # Define colors for top positions
+    top_colors = ['gold', 'silver', '#cd7f32']  # Gold, Silver, Bronze
+    other_colors = plt.cm.viridis(range(3, len(df)))  # Use colormap for other bars
+    colors = top_colors + list(other_colors)
+
+    # Plot with enhancements
+    plt.figure(figsize=(12, 8))
+    bars = plt.bar(df['Athlete'], df['Distance'], color=colors[:len(df)])
+
+    # Add images above each bar according to rank
+    for i, (bar, medal_image) in enumerate(zip(bars, medal_images)):
+        yval = bar.get_height()
+        img = plt.imread(medal_image)
+        imagebox = OffsetImage(img, zoom=0.2)  # Adjust zoom to scale the image appropriately
+        ab = AnnotationBbox(imagebox, (bar.get_x() + bar.get_width() / 2, yval + 1.0), frameon=False)  # Adjusted y-position
+        plt.gca().add_artist(ab)
+
+    plt.title(f'{activity_type} Distances by Athlete 🏆', fontsize=16)
+    plt.xlabel('Athletes', fontsize=12)
+    plt.ylabel('Distance in km', fontsize=12)
+    plt.xticks(rotation=45, ha='right')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
     plt.savefig('data/nordic_ski_bar_chart.png')
-    plt.show()
+    #plt.show()
 
 
-def store_activities(activities):
+def store_activities_with_metadata(new_activities, page, last_activity_number, filename='data/activities.csv'):
     try:
-        with open('data/activities.json', 'w') as f:
-            json.dump(activities, f, indent=4)
-        print("Activities stored successfully.")
-    except Exception as e:
-        print(f"Error storing activities: {e}")
+        # Define the CSV column headers including page and activity number
+        headers = ['page', 'activity_number', 'athlete_name', 'athlete_lastname' ,'distance', 'type', 'elevation_gain']
 
+        # Open the file in append mode to add new data without overwriting
+        with open(filename, mode='a', newline='', encoding='utf-8') as file:
+            writer = csv.DictWriter(file, fieldnames=headers)
+
+            # Write the headers if the file is empty
+            if file.tell() == 0:
+                writer.writeheader()
+
+            # Write each activity with additional metadata
+            for activity in new_activities:
+                last_activity_number += 1
+                athlete_name = activity.get('athlete', {}).get('firstname', 'Unknown')
+                athlete_lastname = activity.get('athlete', {}).get('lastname', 'Unknown')
+                distance = activity.get('distance', 0.0)
+                type = activity.get('type', 'Unknown')
+                elevation_gain = activity.get('total_elevation_gain', 0.0)
+
+                writer.writerow({
+                    'page': page,
+                    'activity_number': last_activity_number,
+                    'athlete_name': athlete_name,
+                    'athlete_lastname': athlete_lastname,
+                    'distance': distance,
+                    'type': type,
+                    'elevation_gain': elevation_gain,
+                })
+
+        print(f"Activities from page {page} successfully stored in {filename}.")
+    except IOError as e:
+        print(f"An error occurred while writing to the file: {e}")
+
+
+def get_page_and_last_activity_number(filename='data/activities.csv'):
+    # Open the CSV file in read mode
+    try:
+        with open(filename, mode='r', newline='', encoding='utf-8') as file:
+            reader = csv.DictReader(file)
+            last_row = None
+            
+            # Iterate over the rows to find the last one
+            for row in reader:
+                last_row = row
+
+            if last_row:
+                # Extract the page and activity number from the last row
+                last_page = int(last_row['page'])
+                last_activity_number = int(last_row['activity_number'])
+                return last_page, last_activity_number
+            else:
+                # If the file is empty, return starting defaults
+                return 1, -1
+    except FileNotFoundError:
+        print(f"File {filename} not found. Starting from the beginning.")
+        return 1, -1
+    except IOError as e:
+        print(f"An error occurred while reading the file: {e}")
+        return 1, -1
+
+
+def get_all_stored_activities(filename='data/activities.csv'):
+    activities = []
+    try:
+        # Open the CSV file in read mode
+        with open(filename, mode='r', newline='', encoding='utf-8') as file:
+            reader = csv.DictReader(file)
+
+            # Iterate over each row and add it to the activities list
+            for row in reader:
+                activities.append(row)
+                
+    except FileNotFoundError:
+        print(f"File {filename} not found. No activities to return.")
+    except IOError as e:
+        print(f"An error occurred while reading the file: {e}")
+    
+    return activities

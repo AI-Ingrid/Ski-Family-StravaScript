@@ -1,0 +1,201 @@
+page,activity_number,athlete_name,athlete_lastname,distance,type,elevation_gain
+1,0,Jørgen,K.,8672.4,Run,67.0
+1,0,Ellen Merete,K.,4771.6,Hike,285.0
+1,0,Ellen Merete,K.,9219.5,Hike,474.0
+1,0,Håkon,K.,6865.0,Hike,369.0
+1,0,Henrik Jøssund,K.,8708.3,Run,80.4
+1,0,Ellen Merete,K.,0.0,WeightTraining,0
+1,0,Jørgen,K.,8656.7,Run,60.0
+1,0,Ellen Merete,K.,2546.1,Hike,210.0
+1,0,Ellen Merete,K.,2783.3,Hike,137.0
+1,0,Ingrid,K.,5415.0,Run,51.0
+1,0,Henrik,D.,5407.8,Run,44.0
+1,0,Ellen Merete,K.,2562.8,Hike,84.0
+1,0,Ellen Merete,K.,0.0,WeightTraining,0
+1,0,Henrik Jøssund,K.,0.0,Workout,0
+1,0,Marie,K.,0.0,Workout,0
+1,0,Ingrid,K.,4426.5,Run,0
+1,0,Marie,K.,4046.7,Run,0
+1,0,Ellen Merete,K.,6767.0,Walk,79.0
+1,0,Jørgen,K.,6775.3,Walk,80.0
+1,0,Henrik Jøssund,K.,0.0,Workout,0
+1,0,Jørgen,K.,7065.0,Run,81.0
+1,0,Ellen Merete,K.,7073.9,Run,80.0
+1,0,Ellen Merete,K.,0.0,WeightTraining,0
+1,0,Marie,K.,0.0,Workout,0
+1,0,Ellen Merete,K.,4418.8,Walk,58.0
+1,0,Jørgen,K.,4424.6,Walk,56.0
+1,0,Ellen Merete,K.,7232.8,Run,116.0
+1,0,Henrik Jøssund,K.,7906.0,Run,0
+1,0,Ellen Merete,K.,0.0,WeightTraining,0
+1,0,Marie,K.,4466.8,Run,0
+1,0,Ingrid,K.,11496.9,Run,0
+1,0,Marie,K.,0.0,WeightTraining,0
+1,0,Marie,K.,9350.0,Hike,1112.0
+1,0,Ingrid,K.,10550.1,Hike,967.0
+1,0,Jørgen,K.,9513.7,Run,68.0
+1,0,Jørgen,K.,5006.0,Walk,63.0
+1,0,Ellen Merete,K.,4881.4,Walk,121.0
+1,0,Henrik Jøssund,K.,0.0,Workout,0
+1,0,Ellen Merete,K.,7032.6,Run,84.0
+1,0,Jørgen,K.,9373.5,Run,48.0
+1,0,Ellen Merete,K.,0.0,WeightTraining,0
+1,0,Marie,K.,6951.3,Hike,535.7
+1,0,Håkon,K.,7187.6,Hike,496.0
+1,0,Ingrid,K.,7096.5,Hike,521.0
+1,0,Jørgen,K.,6979.9,Walk,88.0
+1,0,Ellen Merete,K.,6738.5,Walk,83.0
+1,0,Henrik Jøssund,K.,0.0,Workout,0
+1,0,Jørgen,K.,4908.5,Walk,91.0
+1,0,Ellen Merete,K.,4919.8,Walk,92.0
+1,0,Ingrid,K.,5038.6,Run,0
+1,0,Jørgen,K.,13706.0,Run,121.0
+1,0,Ellen Merete,K.,7040.2,Run,147.0
+1,0,Marie,K.,0.0,Workout,0
+1,0,Ellen Merete,K.,0.0,WeightTraining,0
+1,0,Henrik Jøssund,K.,10223.8,Run,84.8
+1,0,Jørgen,K.,9167.9,Run,65.0
+1,0,Henrik Jøssund,K.,0.0,Workout,0
+1,0,Ellen Merete,K.,7028.1,Run,79.0
+1,0,Marie,K.,7151.4,Run,156.7
+1,0,Ellen Merete,K.,0.0,WeightTraining,0
+1,0,Marie,K.,0.0,WeightTraining,0
+1,0,Ellen Merete,K.,7513.1,Walk,154.0
+1,0,Jørgen,K.,7540.3,Walk,151.0
+1,0,Ellen Merete,K.,0.0,WeightTraining,0
+1,0,Marie,K.,11591.6,Run,68.3
+1,0,Ingrid,K.,12188.9,Run,76.0
+1,0,Jørgen,K.,5452.1,Walk,81.0
+1,0,Ellen Merete,K.,5463.0,Walk,74.0
+1,0,Ellen Merete,K.,0.0,WeightTraining,0
+1,0,Henrik Jøssund,K.,0.0,Workout,0
+1,0,Ingrid,K.,0.0,NordicSki,0
+1,0,Ingrid,K.,10000.0,NordicSki,310.0
+1,0,Henrik Jøssund,K.,0.0,Workout,0
+1,0,Henrik Jøssund,K.,0.0,Workout,0
+1,0,Henrik Jøssund,K.,0.0,Workout,0
+1,0,Marie,K.,0.0,Workout,0
+1,0,Henrik Jøssund,K.,0.0,Workout,0
+1,0,Ingrid,K.,15077.5,NordicSki,153.0
+1,0,Ingrid,K.,10057.6,NordicSki,106.0
+1,0,Henrik,D.,10033.7,NordicSki,94.0
+1,0,Henrik Jøssund,K.,0.0,Workout,0
+1,0,Marie,K.,0.0,WeightTraining,0
+1,0,Marie,K.,0.0,Workout,0
+1,0,Henrik Jøssund,K.,7832.5,Run,69.0
+1,0,Marie,K.,4589.4,Run,0
+1,0,Henrik,D.,10000.0,NordicSki,0
+1,0,Ingrid,K.,0.0,NordicSki,0
+1,0,Marie,K.,0.0,NordicSki,0
+1,0,Ingrid,K.,10000.0,NordicSki,310.0
+1,0,Ingrid,K.,10073.3,NordicSki,102.0
+1,0,Henrik,D.,9237.6,NordicSki,90.0
+1,0,Marie,K.,5689.8,Run,0
+1,0,Jørgen,K.,9970.2,NordicSki,96.0
+1,0,Ellen Merete,K.,9970.2,NordicSki,96.0
+1,0,Henrik,D.,15322.6,NordicSki,131.0
+1,0,Ingrid,K.,15192.5,NordicSki,154.0
+1,1,Jørgen,K.,8672.4,Run,67.0
+1,2,Ellen Merete,K.,4771.6,Hike,285.0
+1,3,Ellen Merete,K.,9219.5,Hike,474.0
+1,4,Håkon,K.,6865.0,Hike,369.0
+1,5,Henrik Jøssund,K.,8708.3,Run,80.4
+1,6,Ellen Merete,K.,0.0,WeightTraining,0
+1,7,Jørgen,K.,8656.7,Run,60.0
+1,8,Ellen Merete,K.,2546.1,Hike,210.0
+1,9,Ellen Merete,K.,2783.3,Hike,137.0
+1,10,Ingrid,K.,5415.0,Run,51.0
+1,11,Henrik,D.,5407.8,Run,44.0
+1,12,Ellen Merete,K.,2562.8,Hike,84.0
+1,13,Ellen Merete,K.,0.0,WeightTraining,0
+1,14,Henrik Jøssund,K.,0.0,Workout,0
+1,15,Marie,K.,0.0,Workout,0
+1,16,Ingrid,K.,4426.5,Run,0
+1,17,Marie,K.,4046.7,Run,0
+1,18,Ellen Merete,K.,6767.0,Walk,79.0
+1,19,Jørgen,K.,6775.3,Walk,80.0
+1,20,Henrik Jøssund,K.,0.0,Workout,0
+1,21,Jørgen,K.,7065.0,Run,81.0
+1,22,Ellen Merete,K.,7073.9,Run,80.0
+1,23,Ellen Merete,K.,0.0,WeightTraining,0
+1,24,Marie,K.,0.0,Workout,0
+1,25,Ellen Merete,K.,4418.8,Walk,58.0
+1,26,Jørgen,K.,4424.6,Walk,56.0
+1,27,Ellen Merete,K.,7232.8,Run,116.0
+1,28,Henrik Jøssund,K.,7906.0,Run,0
+1,29,Ellen Merete,K.,0.0,WeightTraining,0
+1,30,Marie,K.,4466.8,Run,0
+1,31,Ingrid,K.,11496.9,Run,0
+1,32,Marie,K.,0.0,WeightTraining,0
+1,33,Marie,K.,9350.0,Hike,1112.0
+1,34,Ingrid,K.,10550.1,Hike,967.0
+1,35,Jørgen,K.,9513.7,Run,68.0
+1,36,Jørgen,K.,5006.0,Walk,63.0
+1,37,Ellen Merete,K.,4881.4,Walk,121.0
+1,38,Henrik Jøssund,K.,0.0,Workout,0
+1,39,Ellen Merete,K.,7032.6,Run,84.0
+1,40,Jørgen,K.,9373.5,Run,48.0
+1,41,Ellen Merete,K.,0.0,WeightTraining,0
+1,42,Marie,K.,6951.3,Hike,535.7
+1,43,Håkon,K.,7187.6,Hike,496.0
+1,44,Ingrid,K.,7096.5,Hike,521.0
+1,45,Jørgen,K.,6979.9,Walk,88.0
+1,46,Ellen Merete,K.,6738.5,Walk,83.0
+1,47,Henrik Jøssund,K.,0.0,Workout,0
+1,48,Jørgen,K.,4908.5,Walk,91.0
+1,49,Ellen Merete,K.,4919.8,Walk,92.0
+1,50,Ingrid,K.,5038.6,Run,0
+1,51,Jørgen,K.,13706.0,Run,121.0
+1,52,Ellen Merete,K.,7040.2,Run,147.0
+1,53,Marie,K.,0.0,Workout,0
+1,54,Ellen Merete,K.,0.0,WeightTraining,0
+1,55,Henrik Jøssund,K.,10223.8,Run,84.8
+1,56,Jørgen,K.,9167.9,Run,65.0
+1,57,Henrik Jøssund,K.,0.0,Workout,0
+1,58,Ellen Merete,K.,7028.1,Run,79.0
+1,59,Marie,K.,7151.4,Run,156.7
+1,60,Ellen Merete,K.,0.0,WeightTraining,0
+1,61,Marie,K.,0.0,WeightTraining,0
+1,62,Ellen Merete,K.,7513.1,Walk,154.0
+1,63,Jørgen,K.,7540.3,Walk,151.0
+1,64,Ellen Merete,K.,0.0,WeightTraining,0
+1,65,Marie,K.,11591.6,Run,68.3
+1,66,Ingrid,K.,12188.9,Run,76.0
+1,67,Jørgen,K.,5452.1,Walk,81.0
+1,68,Ellen Merete,K.,5463.0,Walk,74.0
+1,69,Ellen Merete,K.,0.0,WeightTraining,0
+1,70,Henrik Jøssund,K.,0.0,Workout,0
+1,71,Ingrid,K.,0.0,NordicSki,0
+1,72,Ingrid,K.,10000.0,NordicSki,310.0
+1,73,Henrik Jøssund,K.,0.0,Workout,0
+1,74,Henrik Jøssund,K.,0.0,Workout,0
+1,75,Henrik Jøssund,K.,0.0,Workout,0
+1,76,Marie,K.,0.0,Workout,0
+1,77,Henrik Jøssund,K.,0.0,Workout,0
+1,78,Ingrid,K.,15077.5,NordicSki,153.0
+1,79,Ingrid,K.,10057.6,NordicSki,106.0
+1,80,Henrik,D.,10033.7,NordicSki,94.0
+1,81,Henrik Jøssund,K.,0.0,Workout,0
+1,82,Marie,K.,0.0,WeightTraining,0
+1,83,Marie,K.,0.0,Workout,0
+1,84,Henrik Jøssund,K.,7832.5,Run,69.0
+1,85,Marie,K.,4589.4,Run,0
+1,86,Henrik,D.,10000.0,NordicSki,0
+1,87,Ingrid,K.,0.0,NordicSki,0
+1,88,Marie,K.,0.0,NordicSki,0
+1,89,Ingrid,K.,10000.0,NordicSki,310.0
+1,90,Ingrid,K.,10073.3,NordicSki,102.0
+1,91,Henrik,D.,9237.6,NordicSki,90.0
+1,92,Marie,K.,5689.8,Run,0
+1,93,Jørgen,K.,9970.2,NordicSki,96.0
+1,94,Ellen Merete,K.,9970.2,NordicSki,96.0
+1,95,Henrik,D.,15322.6,NordicSki,131.0
+1,96,Ingrid,K.,15192.5,NordicSki,154.0
+1,97,Ellen Merete,K.,9967.2,NordicSki,108.0
+1,98,Jørgen,K.,9972.0,NordicSki,97.0
+1,99,Ingrid,K.,25196.5,NordicSki,258.0
+1,100,Henrik,D.,25276.5,NordicSki,231.0
+1,101,Henrik Jøssund,K.,11753.6,IceSkate,61.2
+1,102,Marie,K.,11925.6,IceSkate,50.0
+1,103,Henrik Jøssund,K.,0.0,Workout,0
+1,104,Ingrid,K.,75.7,Run,0.0

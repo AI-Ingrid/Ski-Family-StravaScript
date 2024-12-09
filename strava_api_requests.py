@@ -2,6 +2,7 @@ import os
 import json
 import requests
 
+from utils import store_activities_with_metadata
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -53,13 +54,12 @@ class StravaAPI:
         except requests.exceptions.RequestException as e:
             print(f"Error obtaining access token: {e}")
 
-    def fetch_all_club_activities(self, after, per_page=30):
+    def get_new_club_activities_and_store_them(self, after, per_page=200, page=1, last_activity_number=0):
         if not self.access_token:
             print("Access token is not set. Cannot fetch club activities.")
             return []
 
         all_activities = []
-        page = 1
 
         while True:
             try:
@@ -78,9 +78,15 @@ class StravaAPI:
                     print("No more activities available.")
                     break
 
-                for activity in activities:
+                for activity in activities[last_activity_number:]:
                     if activity not in all_activities:
                         all_activities.append(activity)
+                
+                store_activities_with_metadata(activities[last_activity_number:], page, last_activity_number)
+                last_activity_number += len(activities[last_activity_number:])
+
+                if last_activity_number < (200 * page):
+                    break
 
                 page += 1
 
@@ -88,9 +94,3 @@ class StravaAPI:
                 print(f"Error fetching club activities: {e}")
                 break
 
-        return all_activities
-
-    def save_activities_to_json(self, activities, filename):
-        with open(filename, 'w') as file:
-            json.dump(activities, file, indent=4)
-        print(f"Activities saved to {filename}")
