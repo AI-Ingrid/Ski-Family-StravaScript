@@ -14,26 +14,35 @@ def plot_activity_distances(activities, activity_type, medal_images):
 
     # Prepare data for plotting
     distances = [float(activity['distance']) / 1000 for activity in filtered_activities]
+    elevations = [float(activity['elevation']) for activity in filtered_activities]
     athletes = [(activity['athlete_name'] + " " + activity['athlete_lastname']) for activity in filtered_activities]
 
-    df = pd.DataFrame({
+    df_distance = pd.DataFrame({
         'Athlete': athletes,
         'Distance': distances
     })
 
-    df = df.groupby('Athlete').sum().reset_index()
+    df_elevation = pd.DataFrame({
+        'Athlete': athletes,
+        'Elevation': elevations
+    })
 
-    # Sort the DataFrame by Distance in descending order
-    df = df.sort_values(by='Distance', ascending=False).reset_index(drop=True)
+    df_distance = df_distance.groupby('Athlete').sum().reset_index()
+    df_elevation = df_elevation.groupby('Athlete').sum().reset_index()
+
+    # Sort the DataFrame by Distance/Elevation in descending order
+    df_distance = df_distance.sort_values(by='Distance', ascending=False).reset_index(drop=True)
+    df_elevation = df_elevation.sort_values(by='Elevation', ascending=False).reset_index(drop=True)
 
     # Define colors for top positions
     top_colors = ['gold', 'silver', '#cd7f32']  # Gold, Silver, Bronze
-    other_colors = plt.cm.viridis(range(3, len(df)))  # Use colormap for other bars
+    other_colors = plt.cm.Blues(range(3, len(df_distance)))  # Use colormap for other bars
+    #other_colors = plt.cm.Blues(range(256))
     colors = top_colors + list(other_colors)
 
-    # Plot with enhancements
+    # -- Plot distance --
     plt.figure(figsize=(12, 8))
-    bars = plt.bar(df['Athlete'], df['Distance'], color=colors[:len(df)])
+    bars = plt.bar(df_distance['Athlete'], df_distance['Distance'], color=colors[:len(df_distance)])
 
     # Add images above each bar according to rank
     for i, (bar, medal_image) in enumerate(zip(bars, medal_images)):
@@ -43,13 +52,34 @@ def plot_activity_distances(activities, activity_type, medal_images):
         ab = AnnotationBbox(imagebox, (bar.get_x() + bar.get_width() / 2, yval + 1.0), frameon=False)  # Adjusted y-position
         plt.gca().add_artist(ab)
 
-    plt.title('km på langrenn siden 1.nov 2024 til dags dato', fontsize=16)
-    plt.xlabel('Familiemedlem', fontsize=12)
+    plt.title('Oversikt over distanser', fontsize=16)
+    plt.xlabel('Familiemedlemmer', fontsize=12)
     plt.ylabel('km', fontsize=12)
     plt.xticks(rotation=45, ha='right')
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
-    plt.savefig('data/nordic_ski_bar_chart.png')
+    plt.savefig('data/nordic_ski_bar_chart_distance.png')
+
+    # -- Plot elevation --
+    plt.figure(figsize=(12, 8))
+    bars = plt.bar(df_distance['Athlete'], df_distance['Elevation'], color=colors[:len(df_distance)])
+
+    # Add images above each bar according to rank
+    for i, (bar, medal_image) in enumerate(zip(bars, medal_images)):
+        yval = bar.get_height()
+        img = plt.imread(medal_image)
+        imagebox = OffsetImage(img, zoom=0.2)  # Adjust zoom to scale the image appropriately
+        ab = AnnotationBbox(imagebox, (bar.get_x() + bar.get_width() / 2, yval + 1.0), frameon=False)  # Adjusted y-position
+        plt.gca().add_artist(ab)
+
+    plt.title('Oversikt over høydemetere', fontsize=16)
+    plt.xlabel('Familiemedlemmer', fontsize=12)
+    plt.ylabel('meter', fontsize=12)
+    plt.xticks(rotation=45, ha='right')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.savefig('data/nordic_ski_bar_chart_elevation.png')
+
 
 
 def store_activities_with_metadata(new_activities, page, last_activity_number, filename='data/activities.csv'):
