@@ -54,7 +54,7 @@ class StravaAPI:
         except requests.exceptions.RequestException as e:
             print(f"Error obtaining access token: {e}")
 
-    def get_new_club_activities_and_store_them(self, after, per_page=200, page=1, last_activity_number=0):
+    def get_new_club_activities_and_store_them(self, after, per_page=200, page=1, last_activity_number=0, filename='data/activities.csv'):
         if not self.access_token:
             print("Access token is not set. Cannot fetch club activities.")
             return []
@@ -82,7 +82,7 @@ class StravaAPI:
                     if activity not in all_activities:
                         all_activities.append(activity)
                 
-                store_activities_with_metadata(activities[last_activity_number:], page, last_activity_number)
+                store_activities_with_metadata(activities[last_activity_number:], page, last_activity_number, filename=filename)
                 last_activity_number += len(activities[last_activity_number:])
 
                 if last_activity_number < (200 * page):
