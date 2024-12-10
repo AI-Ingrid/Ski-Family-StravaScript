@@ -1,9 +1,11 @@
 import csv
-import os
 import pandas as pd
+
+import matplotlib
+matplotlib.use('Agg')
+
 import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
-import numpy as np
 
 def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     filtered_activities = [
@@ -57,6 +59,7 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
     plt.savefig(abs_path + '/data/nordic_ski_bar_chart_distance.png')
+    plt.close()
 
     # -- Plot elevation --
     plt.figure(figsize=(12, 8))
@@ -77,6 +80,7 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
     plt.savefig(abs_path + '/data/nordic_ski_bar_chart_elevation.png')
+    plt.close()
 
 
 
