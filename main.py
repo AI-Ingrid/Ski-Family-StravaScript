@@ -41,8 +41,11 @@ def main():
     print("New activities:", activities)
 
     if activities:
+        print("GeT EMOJIS...")
         emoji_images = get_emoji_images(abs_path)
+        print("Plotting activity charts...")
         plot_activity_charts(activities, 'NordicSki', emoji_images, abs_path)
+        print("Committing and pushing..")
         commit_and_push_changes()
 
 if __name__ == '__main__':
