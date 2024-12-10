@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import numpy as np
 
-def plot_activity_charts(activities, activity_type, medal_images):
+def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     filtered_activities = [
         activity for activity in activities if activity['type'] == activity_type
     ]
@@ -56,7 +56,7 @@ def plot_activity_charts(activities, activity_type, medal_images):
     plt.xticks(rotation=45, ha='right')
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
-    plt.savefig('data/nordic_ski_bar_chart_distance.png')
+    plt.savefig(abs_path + '/data/nordic_ski_bar_chart_distance.png')
 
     # -- Plot elevation --
     plt.figure(figsize=(12, 8))
@@ -76,7 +76,7 @@ def plot_activity_charts(activities, activity_type, medal_images):
     plt.xticks(rotation=45, ha='right')
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
-    plt.savefig('data/nordic_ski_bar_chart_elevation.png')
+    plt.savefig(abs_path + '/data/nordic_ski_bar_chart_elevation.png')
 
 
 

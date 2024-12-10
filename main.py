@@ -39,7 +39,7 @@ def main():
 
     if activities:
         emoji_images = get_emoji_images(abs_path)
-        plot_activity_charts(activities, 'NordicSki', emoji_images)
+        plot_activity_charts(activities, 'NordicSki', emoji_images, abs_path)
         commit_and_push_changes()
 
 if __name__ == '__main__':
