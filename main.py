@@ -11,8 +11,6 @@ def connect_to_strava_api():
 
 def fetch_activities_after_date(date, strava_api, path_to_activity_data):
     last_page, last_activity_number = get_page_and_last_activity_number(filename=path_to_activity_data)
-    print("last page:", last_page)
-    print("last activity number:", last_activity_number)
     strava_api.get_new_club_activities_and_store_them(after=date, 
                                                       page=last_page, 
                                                       last_activity_number=last_activity_number,
@@ -36,17 +34,12 @@ def main():
     abs_path = os.getenv('ABS_PATH_REPO')
     path_to_activity_data = abs_path + '/data/activities.csv'
     
-    print("Fetching activities after November 1st, 2024...")
     activities = fetch_activities_after_date(first_of_november, strava_api, path_to_activity_data)
-    print("New activities:", activities)
 
     if activities:
-        print("GeT EMOJIS...")
         emoji_images = get_emoji_images(abs_path)
-        print("Plotting activity charts...")
         plot_activity_charts(activities, 'NordicSki', emoji_images, abs_path)
-        print("Committing and pushing..")
-        commit_and_push_changes()
+        commit_and_push_changes(abs_path)
 
 if __name__ == '__main__':
     main()

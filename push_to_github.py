@@ -1,18 +1,16 @@
-import os
 import subprocess
 
 from dotenv import load_dotenv
 load_dotenv()
 
-def commit_and_push_changes():
-    abs_path_repo = os.getenv('ABS_PATH_REPO')
+def commit_and_push_changes(abs_path_repo):
+    path_distance_plot = abs_path_repo + '/data/nordic_ski_bar_chart_distance.png'
+    path_elevation_plot = abs_path_repo + '/data/nordic_ski_bar_chart_elevation.png'
     
     try:
-        os.chdir(abs_path_repo) 
-
         # Add changes to git
-        subprocess.run(["git", "add", "data/nordic_ski_bar_chart_distance.png"], check=True)
-        subprocess.run(["git", "add", "data/nordic_ski_bar_chart_elevation.png"], check=True)
+        subprocess.run(["git", "add", path_distance_plot], check=True)
+        subprocess.run(["git", "add", path_elevation_plot], check=True)
 
         # Commit changes
         subprocess.run(["git", "commit", "-m", "Update bar charts"], check=True)
