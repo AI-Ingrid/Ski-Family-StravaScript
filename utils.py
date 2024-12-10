@@ -52,7 +52,7 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
         ab = AnnotationBbox(imagebox, (bar.get_x() + bar.get_width() / 2, yval + 1.0), frameon=False)  # Adjusted y-position
         plt.gca().add_artist(ab)
 
-    plt.title('Oversikt over distanser', fontsize=16)
+    plt.title('Oversikt over km tilbakelagt per familiemedlem', fontsize=16)
     plt.xlabel('Familiemedlemmer', fontsize=12)
     plt.ylabel('km', fontsize=12)
     plt.xticks(rotation=45, ha='right')
