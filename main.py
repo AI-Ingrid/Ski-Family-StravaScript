@@ -26,6 +26,16 @@ def get_emoji_images(abs_path):
     # Prepend abs_path to each file name
     return [f"{abs_path}/{emoji}" for emoji in emoji_files]
 
+def update_readme(abs_path_repo):
+    readme_path = os.path.join(abs_path_repo, 'README.md')
+    with open(readme_path, 'r') as file:
+        content = file.read()
+    
+    # Replace the placeholder with the current date and time
+    updated_content = content.replace('PLACEHOLDER', datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+    
+    with open(readme_path, 'w') as file:
+        file.write(updated_content)
 
 def main():
     strava_api = connect_to_strava_api()
@@ -39,6 +49,7 @@ def main():
     if activities:
         emoji_images = get_emoji_images(abs_path)
         plot_activity_charts(activities, 'NordicSki', emoji_images, abs_path)
+        update_readme(abs_path)
         commit_and_push_changes(abs_path)
 
 if __name__ == '__main__':

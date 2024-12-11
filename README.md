@@ -11,3 +11,5 @@
 
 ## "Flatmark blir for enkelt" 📈
 ![Nordic Ski Elevation Bar Chart](data/nordic_ski_bar_chart_elevation.png)
+
+_Last updated: PLACEHOLDER_
