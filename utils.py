@@ -83,7 +83,6 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     plt.close()
 
 
-
 def store_activities_with_metadata(new_activities, page, last_activity_number, filename='data/activities.csv'):
     try:
         # Define the CSV column headers including page and activity number
