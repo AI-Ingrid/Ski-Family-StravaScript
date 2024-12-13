@@ -12,4 +12,4 @@
 ## "Flatmark blir for enkelt" 📈
 ![Nordic Ski Elevation Bar Chart](data/nordic_ski_bar_chart_elevation.png)
 
-_Last updated: 2024-12-13 13:06:30_
+_Updated on December 13, 2024 at 01:10 PM_
