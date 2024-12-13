@@ -26,24 +26,26 @@ def get_emoji_images(abs_path):
     # Prepend abs_path to each file name
     return [f"{abs_path}/{emoji}" for emoji in emoji_files]
 
+
 def update_last_updated_time(last_updated_path, current_time=None):
     with open(last_updated_path, 'w') as file:
         file.write(current_time)
 
-def update_readme_with_last_updated_time(abs_path_repo, path_to_last_updated_time):
-    # Update the timestamp in the README.md file
-    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    update_last_updated_time(path_to_last_updated_time, current_time)
 
+def update_readme_with_last_updated_time(abs_path_repo, path_to_last_updated_time):
     readme_path = os.path.join(abs_path_repo, 'README.md')
+    last_updated_time = datetime.now().strftime('Updated on %B %d, %Y at %I:%M %p')
+    update_last_updated_time(path_to_last_updated_time, last_updated_time)
 
     with open(readme_path, 'r') as file:
-        content = file.read()
+        lines = file.readlines()
 
-    updated_content = content.replace('{{LAST_UPDATED}}', current_time)
+    # Update the last line with the current date and time
+    lines[-1] = f"_{last_updated_time}_\n"
 
     with open(readme_path, 'w') as file:
-        file.write(updated_content)
+        file.writelines(lines)
+
 
 def main():
     strava_api = connect_to_strava_api()
