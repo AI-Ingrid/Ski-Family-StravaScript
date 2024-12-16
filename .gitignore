@@ -5,3 +5,4 @@ logs/
 venv/
 .venv/
 data/activities.csv
+SSH_AGENT_ENV/
