@@ -1,4 +1,5 @@
 import os
+import subprocess
 from datetime import datetime
 from strava_api_requests import StravaAPI
 from utils import plot_activity_charts, get_page_and_last_activity_number, get_all_stored_activities
@@ -47,6 +48,12 @@ def update_readme_with_last_updated_time(abs_path_repo, path_to_last_updated_tim
         file.writelines(lines)
 
 
+def start_ssh_agent(abs_repo_path):
+    script_path = abs_repo_path + '/start_ssh_agent.sh'
+    env_path = abs_repo_path + '/.env'
+    subprocess.run([script_path, env_path], check=True)
+
+
 def main():
     strava_api = connect_to_strava_api()
 
@@ -62,6 +69,7 @@ def main():
         emoji_images = get_emoji_images(abs_path)
         plot_activity_charts(activities, 'NordicSki', emoji_images, abs_path)
         update_readme_with_last_updated_time(abs_path, path_to_last_updated_time)
+        start_ssh_agent(abs_path)
         commit_and_push_changes(abs_path)
 
 if __name__ == '__main__':
