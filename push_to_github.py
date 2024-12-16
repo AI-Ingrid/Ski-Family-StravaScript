@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def commit_and_push_changes(abs_path_repo):
+    print(" -- Committing and pushing changes to GitHub... --")
     path_distance_plot = os.path.join(abs_path_repo, 'data/nordic_ski_bar_chart_distance.png')
     path_elevation_plot = os.path.join(abs_path_repo, 'data/nordic_ski_bar_chart_elevation.png')
     path_to_readme = os.path.join(abs_path_repo, 'README.md')

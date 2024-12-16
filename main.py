@@ -6,11 +6,13 @@ from utils import plot_activity_charts, get_page_and_last_activity_number, get_a
 from push_to_github import commit_and_push_changes
 
 def connect_to_strava_api():
+    print(" -- Connecting to Strava API... --")
     strava_api = StravaAPI()
     strava_api.get_access_token()
     return strava_api
 
 def fetch_activities_after_date(date, strava_api, path_to_activity_data):
+    print(" -- Fetching activities... --")
     last_page, last_activity_number = get_page_and_last_activity_number(filename=path_to_activity_data)
     strava_api.get_new_club_activities_and_store_them(after=date,
                                                       page=last_page,
@@ -34,6 +36,7 @@ def update_last_updated_time(last_updated_path, current_time=None):
 
 
 def update_readme_with_last_updated_time(abs_path_repo, path_to_last_updated_time):
+    print(" -- Updating README.md with last updated time... --")
     readme_path = os.path.join(abs_path_repo, 'README.md')
     last_updated_time = datetime.now().strftime('Updated on %B %d, %Y at %I:%M %p')
     update_last_updated_time(path_to_last_updated_time, last_updated_time)
@@ -49,6 +52,7 @@ def update_readme_with_last_updated_time(abs_path_repo, path_to_last_updated_tim
 
 
 def start_ssh_agent(abs_repo_path):
+    print(" -- Starting SSH agent... --")
     script_path = abs_repo_path + '/start_ssh_agent.sh'
     env_path = abs_repo_path + '/.env'
     subprocess.run([script_path, env_path], check=True)
@@ -71,6 +75,8 @@ def main():
         update_readme_with_last_updated_time(abs_path, path_to_last_updated_time)
         start_ssh_agent(abs_path)
         commit_and_push_changes(abs_path)
+
+    print(" -- Process finished --")
 
 if __name__ == '__main__':
     main()

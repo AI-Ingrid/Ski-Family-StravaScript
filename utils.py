@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 def plot_activity_charts(activities, activity_type, medal_images, abs_path):
+    print(f"-- Plotting charts for activity type: {activity_type} --")
     filtered_activities = [
         activity for activity in activities if activity['type'] == activity_type
     ]
@@ -126,7 +127,7 @@ def get_page_and_last_activity_number(filename='data/activities.csv'):
         with open(filename, mode='r', newline='', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             last_row = None
-            
+
             # Iterate over the rows to find the last one
             for row in reader:
                 last_row = row
@@ -157,10 +158,10 @@ def get_all_stored_activities(filename='data/activities.csv'):
             # Iterate over each row and add it to the activities list
             for row in reader:
                 activities.append(row)
-                
+
     except FileNotFoundError:
         print(f"File {filename} not found. No activities to return.")
     except IOError as e:
         print(f"An error occurred while reading the file: {e}")
-    
+
     return activities
