@@ -50,6 +50,9 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     color_elevation = '#5F9EA0'  # Cadet Blue
     color_avg_distance = '#B0E0E6'  # Powder Blue
 
+    # Define a custom color palette for the pie chart
+    pie_colors = ['#4682B4', '#5F9EA0', '#B0E0E6', '#ADD8E6', '#87CEEB', '#87CEFA', '#00BFFF', '#1E90FF', '#6495ED', '#4169E1']
+
     # -- Plot distance --
     plt.figure(figsize=(12, 8))
     bars = plt.bar(df_distance['Athlete'], df_distance['Distance'], color=color_distance)
@@ -106,7 +109,7 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     activity_counts = pd.Series(athletes).value_counts()
 
     plt.figure(figsize=(10, 7))
-    plt.pie(activity_counts, labels=activity_counts.index, autopct=lambda p: f'{int(p * sum(activity_counts) / 100)}', startangle=140)
+    plt.pie(activity_counts, labels=activity_counts.index, colors=pie_colors, autopct=lambda p: f'{int(p * sum(activity_counts) / 100)}', startangle=140)
     plt.title('Antall langrennsturer per familiemedlem', fontsize=16)
     plt.tight_layout()
     plt.savefig(abs_path + '/data/nordic_ski_pie_chart_activities.png')
