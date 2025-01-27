@@ -103,6 +103,34 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     plt.savefig(abs_path + '/data/nordic_ski_pie_chart_activities.png')
     plt.close()
 
+    # -- Plot average distance --
+    df_avg_distance = df_distance.copy()
+    df_avg_distance['Average Distance'] = df_avg_distance['Distance'] / activity_counts[df_avg_distance['Athlete']].values
+
+    plt.figure(figsize=(12, 8))
+    bars = plt.bar(df_avg_distance['Athlete'], df_avg_distance['Average Distance'], color=color_distance)
+
+    # Add numbers inside each bar
+    for bar in bars:
+        yval = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width() / 2, yval - (yval * 0.1), f'{yval:.2f}', ha='center', va='top', color='white', fontsize=10)
+
+    # Add images above each bar according to rank
+    for i, (bar, medal_image) in enumerate(zip(bars, medal_images)):
+        yval = bar.get_height()
+        img = plt.imread(medal_image)
+        imagebox = OffsetImage(img, zoom=0.2)  # Adjust zoom to scale the image appropriately
+        ab = AnnotationBbox(imagebox, (bar.get_x() + bar.get_width() / 2, yval + 1.0), frameon=False)  # Adjusted y-position
+        plt.gca().add_artist(ab)
+
+    plt.title('Gjennomsnittlig distanse per familiemedlem', fontsize=16)
+    plt.xlabel('Familiemedlemmer', fontsize=12)
+    plt.ylabel('Gjennomsnittlig distanse (km)', fontsize=12)
+    plt.xticks(rotation=45, ha='right')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.savefig(abs_path + '/data/nordic_ski_avg_distance.png')
+    plt.close()
 
 def store_activities_with_metadata(activities, page, filename='data/activities.csv'):
     last_activity_number = 0

@@ -15,5 +15,7 @@
 ## Hvem går mest på ski egt?
 ![Nordic Ski Pie Chart](data/nordic_ski_pie_chart_activities.png)
 
-_Updated on January 27, 2025 at 07:32 PM_
-_Updated on January 27, 2025 at 07:41 PM_
+## Hyppighet er ikke alt..
+![Nordic Ski Avg Distance plot](data/nordic_ski_avg_distance.png)
+
+_Updated on January 27, 2025 at 07:48 PM_
