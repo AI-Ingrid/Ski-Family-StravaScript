@@ -48,7 +48,7 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
 
     color_distance = '#4682B4'  # Steel Blue
     color_elevation = '#5F9EA0'  # Cadet Blue
-    color_avg_distance = '#4682B4'  # Light Steel Blue
+    color_avg_distance = '#B0E0E6'  # Powder Blue
 
     # -- Plot distance --
     plt.figure(figsize=(12, 8))
