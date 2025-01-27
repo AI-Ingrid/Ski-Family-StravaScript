@@ -84,21 +84,20 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     plt.close()
 
 
-def store_activities_with_metadata(new_activities, page, last_activity_number, filename='data/activities.csv'):
+def store_activities_with_metadata(activities, page, filename='data/activities.csv'):
+    last_activity_number = 0
     try:
         # Define the CSV column headers including page and activity number
         headers = ['page', 'activity_number', 'athlete_name', 'athlete_lastname' ,'distance', 'type', 'elevation_gain']
 
-        # Open the file in append mode to add new data without overwriting
-        with open(filename, mode='a', newline='', encoding='utf-8') as file:
+        # Open the file and overwrite it
+        with open(filename, mode='w', newline='', encoding='utf-8') as file:
             writer = csv.DictWriter(file, fieldnames=headers)
-
             # Write the headers if the file is empty
-            if file.tell() == 0:
-                writer.writeheader()
+            writer.writeheader()
 
             # Write each activity with additional metadata
-            for activity in new_activities:
+            for activity in activities:
                 last_activity_number += 1
                 athlete_name = activity.get('athlete', {}).get('firstname', 'Unknown')
                 athlete_lastname = activity.get('athlete', {}).get('lastname', 'Unknown')

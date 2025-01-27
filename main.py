@@ -14,7 +14,7 @@ def connect_to_strava_api():
 def fetch_activities_after_date(date, strava_api, path_to_activity_data):
     print(" -- Fetching activities... --")
     last_page, last_activity_number = get_page_and_last_activity_number(filename=path_to_activity_data)
-    strava_api.get_new_club_activities_and_store_them(after=date,
+    strava_api.get_club_activities_and_store_them(after=date,
                                                       page=last_page,
                                                       last_activity_number=last_activity_number,
                                                       filename=path_to_activity_data)

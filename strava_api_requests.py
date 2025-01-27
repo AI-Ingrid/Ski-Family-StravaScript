@@ -12,7 +12,7 @@ class StravaAPI:
         self.client_id = os.getenv('CLIENT_ID')
         self.client_secret = os.getenv('CLIENT_SECRET')
         self.club_id = os.getenv('CLUB_ID')
-        
+
         self.token_url = os.getenv('TOKEN_URL')
         self.auth_url = os.getenv('AUTH_URL')
         self.refresh_token = os.getenv('REFRESH_TOKEN')
@@ -33,10 +33,10 @@ class StravaAPI:
 
             self.refresh_token = data.get('refresh_token')
             self.token_expires_at = data.get('expires_at', 0)
-            
+
             print("Refresh Token obtained successfully.")
             return self.refresh_token
-        
+
         except requests.exceptions.RequestException as e:
             print(f"Error obtaining refresh token: {e}")
 
@@ -67,15 +67,13 @@ class StravaAPI:
         else:
             print("Access token is still valid.")
             return self.access_token
-        
-    def get_new_club_activities_and_store_them(self, after, per_page=200, page=1, last_activity_number=0, filename='data/activities.csv'):
+
+    def get_club_activities_and_store_them(self, after, per_page=200, page=1, last_activity_number=0, filename='data/activities.csv'):
         self.get_access_token()
 
         if not self.access_token:
             print("Access token is not set. Cannot fetch club activities.")
             return []
-
-        all_activities = []
 
         while True:
             try:
@@ -94,11 +92,7 @@ class StravaAPI:
                     print("No more activities available.")
                     break
 
-                for activity in activities[last_activity_number:]:
-                    if activity not in all_activities:
-                        all_activities.append(activity)
-                
-                store_activities_with_metadata(activities[last_activity_number:], page, last_activity_number, filename=filename)
+                store_activities_with_metadata(activities, page, filename=filename)
                 last_activity_number += len(activities[last_activity_number:])
 
                 if last_activity_number < (200 * page):
