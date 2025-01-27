@@ -34,12 +34,21 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     df_distance = df_distance.groupby('Athlete').sum().reset_index()
     df_elevation = df_elevation.groupby('Athlete').sum().reset_index()
 
+    # Calculate the number of activities for each athlete
+    activity_counts = pd.Series(athletes).value_counts()
+
+    # Calculate the average distance
+    df_avg_distance = df_distance.copy()
+    df_avg_distance['Average Distance'] = df_avg_distance['Distance'] / activity_counts[df_avg_distance['Athlete']].values
+
     # Sort the DataFrame by Distance/Elevation in descending order
     df_distance = df_distance.sort_values(by='Distance', ascending=False).reset_index(drop=True)
     df_elevation = df_elevation.sort_values(by='Elevation', ascending=False).reset_index(drop=True)
+    df_avg_distance = df_avg_distance.sort_values(by='Average Distance', ascending=False).reset_index(drop=True)
 
-    color_distance = '#4682B4'
-    color_elevation = '#5F9EA0'
+    color_distance = '#4682B4'  # Steel Blue
+    color_elevation = '#5F9EA0'  # Cadet Blue
+    color_avg_distance = '#4682B4'  # Light Steel Blue
 
     # -- Plot distance --
     plt.figure(figsize=(12, 8))
@@ -104,11 +113,8 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     plt.close()
 
     # -- Plot average distance --
-    df_avg_distance = df_distance.copy()
-    df_avg_distance['Average Distance'] = df_avg_distance['Distance'] / activity_counts[df_avg_distance['Athlete']].values
-
     plt.figure(figsize=(12, 8))
-    bars = plt.bar(df_avg_distance['Athlete'], df_avg_distance['Average Distance'], color=color_distance)
+    bars = plt.bar(df_avg_distance['Athlete'], df_avg_distance['Average Distance'], color=color_avg_distance)
 
     # Add numbers inside each bar
     for bar in bars:
@@ -120,7 +126,7 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
         yval = bar.get_height()
         img = plt.imread(medal_image)
         imagebox = OffsetImage(img, zoom=0.2)  # Adjust zoom to scale the image appropriately
-        ab = AnnotationBbox(imagebox, (bar.get_x() + bar.get_width() / 2, yval + 1.0), frameon=False)  # Adjusted y-position
+        ab = AnnotationBbox(imagebox, (bar.get_x() + bar.get_width() / 2, yval), frameon=False)  # Adjusted y-position
         plt.gca().add_artist(ab)
 
     plt.title('Gjennomsnittlig distanse per familiemedlem', fontsize=16)
