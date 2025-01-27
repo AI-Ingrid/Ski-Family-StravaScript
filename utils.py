@@ -45,6 +45,11 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     plt.figure(figsize=(12, 8))
     bars = plt.bar(df_distance['Athlete'], df_distance['Distance'], color=color_distance)
 
+    # Add numbers inside each bar
+    for bar in bars:
+        yval = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width() / 2, yval - (yval * 0.1), f'{yval:.2f}', ha='center', va='top', color='white', fontsize=10)
+
     # Add images above each bar according to rank
     for i, (bar, medal_image) in enumerate(zip(bars, medal_images)):
         yval = bar.get_height()
@@ -65,6 +70,11 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     # -- Plot elevation --
     plt.figure(figsize=(12, 8))
     bars = plt.bar(df_elevation['Athlete'], df_elevation['Elevation'], color=color_elevation)
+
+   # Add numbers inside each bar
+    for bar in bars:
+        yval = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width() / 2, yval - (yval * 0.1), f'{yval:.2f}', ha='center', va='top', color='white', fontsize=10)
 
     # Add images above each bar according to rank
     for i, (bar, medal_image) in enumerate(zip(bars, medal_images)):
