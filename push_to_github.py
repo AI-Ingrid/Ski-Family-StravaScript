@@ -8,6 +8,7 @@ def commit_and_push_changes(abs_path_repo):
     print(" -- Committing and pushing changes to GitHub... --")
     path_distance_plot = os.path.join(abs_path_repo, 'data/nordic_ski_bar_chart_distance.png')
     path_elevation_plot = os.path.join(abs_path_repo, 'data/nordic_ski_bar_chart_elevation.png')
+    path_to_pie_plot = os.path.join(abs_path_repo, 'data/nordic_ski_pie_chart_activities.png')
     path_to_readme = os.path.join(abs_path_repo, 'README.md')
     path_to_last_updated = os.path.join(abs_path_repo, 'data/last_updated.txt')
 
@@ -16,7 +17,7 @@ def commit_and_push_changes(abs_path_repo):
         os.chdir(abs_path_repo)
 
         # Add changes to git
-        subprocess.run(["git", "add", path_distance_plot, path_elevation_plot, path_to_readme, path_to_last_updated], check=True)
+        subprocess.run(["git", "add", path_distance_plot, path_elevation_plot, path_to_pie_plot, path_to_readme, path_to_last_updated], check=True)
 
         # Commit changes
         subprocess.run(["git", "commit", "-m", "Update bar charts"], check=True)
