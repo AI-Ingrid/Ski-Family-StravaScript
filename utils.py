@@ -93,6 +93,16 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     plt.savefig(abs_path + '/data/nordic_ski_bar_chart_elevation.png')
     plt.close()
 
+    # -- Plot pie chart for number of activities --
+    activity_counts = pd.Series(athletes).value_counts()
+
+    plt.figure(figsize=(10, 7))
+    plt.pie(activity_counts, labels=activity_counts.index, autopct=lambda p: f'{int(p * sum(activity_counts) / 100)}', startangle=140)
+    plt.title('Antall langrennsturer per familiemedlem', fontsize=16)
+    plt.tight_layout()
+    plt.savefig(abs_path + '/data/nordic_ski_pie_chart_activities.png')
+    plt.close()
+
 
 def store_activities_with_metadata(activities, page, filename='data/activities.csv'):
     last_activity_number = 0

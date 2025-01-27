@@ -12,4 +12,8 @@
 ## "Flatmark blir for enkelt" 📈
 ![Nordic Ski Elevation Bar Chart](data/nordic_ski_bar_chart_elevation.png)
 
-_Updated on January 27, 2025 at 07:24 PM_
+## Hvem går mest på ski egt?
+![Nordic Ski Pie Chart](data/nordic_ski_pie_chart_activities.png)
+
+_Updated on January 27, 2025 at 07:32 PM_
+
