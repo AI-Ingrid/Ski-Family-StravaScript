@@ -141,11 +141,11 @@ def plot_activity_charts(activities, activity_type, medal_images, abs_path):
     plt.savefig(abs_path + '/data/nordic_ski_avg_distance.png')
     plt.close()
 
-def store_activities_with_metadata(activities, page, filename='data/activities.csv'):
+def store_activities_with_metadata(activities, filename='data/activities.csv'):
     last_activity_number = 0
     try:
         # Define the CSV column headers including page and activity number
-        headers = ['page', 'activity_number', 'athlete_name', 'athlete_lastname' ,'distance', 'type', 'elevation_gain']
+        headers = ['activity_number', 'athlete_name', 'athlete_lastname' ,'distance', 'type', 'elevation_gain']
 
         # Open the file and overwrite it
         with open(filename, mode='w', newline='', encoding='utf-8') as file:
@@ -163,7 +163,6 @@ def store_activities_with_metadata(activities, page, filename='data/activities.c
                 elevation_gain = activity.get('total_elevation_gain', 0.0)
 
                 writer.writerow({
-                    'page': page,
                     'activity_number': last_activity_number,
                     'athlete_name': athlete_name,
                     'athlete_lastname': athlete_lastname,
@@ -172,7 +171,7 @@ def store_activities_with_metadata(activities, page, filename='data/activities.c
                     'elevation_gain': elevation_gain,
                 })
 
-        print(f"Activities from page {page} successfully stored in {filename}.")
+        print(f"Activities successfully stored in {filename}.")
     except IOError as e:
         print(f"An error occurred while writing to the file: {e}")
 

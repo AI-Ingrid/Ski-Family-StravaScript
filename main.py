@@ -11,13 +11,9 @@ def connect_to_strava_api():
     strava_api.get_access_token()
     return strava_api
 
-def fetch_activities_after_date(date, strava_api, path_to_activity_data):
+def fetch_activities_after_date(strava_api, path_to_activity_data):
     print(" -- Fetching activities... --")
-    last_page, last_activity_number = get_page_and_last_activity_number(filename=path_to_activity_data)
-    strava_api.get_club_activities_and_store_them(after=date,
-                                                      page=last_page,
-                                                      last_activity_number=last_activity_number,
-                                                      filename=path_to_activity_data)
+    strava_api.get_club_activities_and_store_them(filename=path_to_activity_data)
 
     all_activities = get_all_stored_activities(filename=path_to_activity_data)
     return all_activities
@@ -61,13 +57,11 @@ def start_ssh_agent(abs_repo_path):
 def main():
     strava_api = connect_to_strava_api()
 
-    first_of_november = int(datetime(2024, 11, 1).timestamp())
-
     abs_path = os.getenv('ABS_PATH_REPO')
     path_to_activity_data = abs_path + '/data/activities.csv'
     path_to_last_updated_time = abs_path + '/data/last_updated.txt'
 
-    activities = fetch_activities_after_date(first_of_november, strava_api, path_to_activity_data)
+    activities = fetch_activities_after_date(strava_api, path_to_activity_data)
 
     if activities:
         emoji_images = get_emoji_images(abs_path)

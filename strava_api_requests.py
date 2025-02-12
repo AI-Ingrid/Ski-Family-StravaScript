@@ -68,21 +68,23 @@ class StravaAPI:
             print("Access token is still valid.")
             return self.access_token
 
-    def get_club_activities_and_store_them(self, after, per_page=200, page=1, last_activity_number=0, filename='data/activities.csv'):
+    def get_club_activities_and_store_them(self, filename='data/activities.csv'):
         self.get_access_token()
 
         if not self.access_token:
             print("Access token is not set. Cannot fetch club activities.")
             return []
 
+        page = 1
+        all_activities = []
+
         while True:
             try:
                 url = f'https://www.strava.com/api/v3/clubs/{self.club_id}/activities'
                 params = {
                     'page': page,
-                    'per_page': per_page,
+                    'per_page': 100,
                     'access_token': self.access_token,
-                    'after': after
                 }
                 response = requests.get(url, params=params)
                 response.raise_for_status()
@@ -92,11 +94,7 @@ class StravaAPI:
                     print("No more activities available.")
                     break
 
-                store_activities_with_metadata(activities, page, filename=filename)
-                last_activity_number += len(activities[last_activity_number:])
-
-                if last_activity_number < (200 * page):
-                    break
+                all_activities.extend(activities)
 
                 page += 1
 
@@ -104,3 +102,4 @@ class StravaAPI:
                 print(f"Error fetching club activities: {e}")
                 break
 
+        store_activities_with_metadata(all_activities, filename=filename)
