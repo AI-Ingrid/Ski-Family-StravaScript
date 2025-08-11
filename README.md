@@ -18,4 +18,4 @@
 ## Hyppighet er ikke alt..
 ![Nordic Ski Avg Distance plot](data/nordic_ski_avg_distance.png)
 
-_Updated on August 11, 2025 at 12:00 PM_
+_Updated on August 11, 2025 at 01:00 PM_
